@@ -8,24 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		1A2CFBC420DE863800BE49E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2CFBC320DE863800BE49E4 /* AppDelegate.swift */; };
-		1A2CFBC620DE863800BE49E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2CFBC520DE863800BE49E4 /* ViewController.swift */; };
-		1A2CFBC920DE863800BE49E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A2CFBC720DE863800BE49E4 /* Main.storyboard */; };
 		1A2CFBCB20DE863900BE49E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A2CFBCA20DE863900BE49E4 /* Assets.xcassets */; };
 		1A2CFBCE20DE863900BE49E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A2CFBCC20DE863900BE49E4 /* LaunchScreen.storyboard */; };
-		1A2CFBDA20DE9F3D00BE49E4 /* tondaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2CFBD920DE9F3D00BE49E4 /* tondaModel.swift */; };
-		1A2CFBDC20DEB45800BE49E4 /* TimeTableKakkokari.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2CFBDB20DEB45800BE49E4 /* TimeTableKakkokari.swift */; };
+		1A72FE0221468F5100ECC053 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A72FE0121468F5100ECC053 /* TimerViewController.swift */; };
+		1A72FE06214694AA00ECC053 /* TimeTableUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A72FE05214694AA00ECC053 /* TimeTableUpViewController.swift */; };
+		1A72FE0A2146AB0400ECC053 /* UIViewBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A72FE092146AB0400ECC053 /* UIViewBorder.swift */; };
+		1A7706BD21452CBE00EC1742 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A7706BC21452CBE00EC1742 /* Main.storyboard */; };
+		1ABA51E6214980A100321A7B /* DataFile_TimeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABA51E5214980A100321A7B /* DataFile_TimeTable.swift */; };
+		1ABA51E82149815600321A7B /* TimerCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABA51E72149815600321A7B /* TimerCalculation.swift */; };
+		1ABB73CA214AE43B00AC7DBD /* TimeTableDownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABB73C9214AE43B00AC7DBD /* TimeTableDownViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1A2CFBC020DE863800BE49E4 /* SojoBusApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SojoBusApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A2CFBC320DE863800BE49E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1A2CFBC520DE863800BE49E4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		1A2CFBC820DE863800BE49E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1A2CFBCA20DE863900BE49E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1A2CFBCD20DE863900BE49E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1A2CFBCF20DE863900BE49E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1A2CFBD920DE9F3D00BE49E4 /* tondaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tondaModel.swift; sourceTree = "<group>"; };
-		1A2CFBDB20DEB45800BE49E4 /* TimeTableKakkokari.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableKakkokari.swift; sourceTree = "<group>"; };
+		1A72FE0121468F5100ECC053 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		1A72FE05214694AA00ECC053 /* TimeTableUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableUpViewController.swift; sourceTree = "<group>"; };
+		1A72FE092146AB0400ECC053 /* UIViewBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewBorder.swift; sourceTree = "<group>"; };
+		1A7706BC21452CBE00EC1742 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		1ABA51E5214980A100321A7B /* DataFile_TimeTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFile_TimeTable.swift; sourceTree = "<group>"; };
+		1ABA51E72149815600321A7B /* TimerCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerCalculation.swift; sourceTree = "<group>"; };
+		1ABB73C9214AE43B00AC7DBD /* TimeTableDownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableDownViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,13 +65,16 @@
 			isa = PBXGroup;
 			children = (
 				1A2CFBC320DE863800BE49E4 /* AppDelegate.swift */,
-				1A2CFBD920DE9F3D00BE49E4 /* tondaModel.swift */,
-				1A2CFBDB20DEB45800BE49E4 /* TimeTableKakkokari.swift */,
-				1A2CFBC520DE863800BE49E4 /* ViewController.swift */,
-				1A2CFBC720DE863800BE49E4 /* Main.storyboard */,
 				1A2CFBCA20DE863900BE49E4 /* Assets.xcassets */,
 				1A2CFBCC20DE863900BE49E4 /* LaunchScreen.storyboard */,
 				1A2CFBCF20DE863900BE49E4 /* Info.plist */,
+				1A7706BC21452CBE00EC1742 /* Main.storyboard */,
+				1A72FE0121468F5100ECC053 /* TimerViewController.swift */,
+				1A72FE05214694AA00ECC053 /* TimeTableUpViewController.swift */,
+				1A72FE092146AB0400ECC053 /* UIViewBorder.swift */,
+				1ABA51E5214980A100321A7B /* DataFile_TimeTable.swift */,
+				1ABA51E72149815600321A7B /* TimerCalculation.swift */,
+				1ABB73C9214AE43B00AC7DBD /* TimeTableDownViewController.swift */,
 			);
 			path = SojoBusApp;
 			sourceTree = "<group>";
@@ -128,9 +137,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A7706BD21452CBE00EC1742 /* Main.storyboard in Resources */,
 				1A2CFBCE20DE863900BE49E4 /* LaunchScreen.storyboard in Resources */,
 				1A2CFBCB20DE863900BE49E4 /* Assets.xcassets in Resources */,
-				1A2CFBC920DE863800BE49E4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,24 +150,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A2CFBDA20DE9F3D00BE49E4 /* tondaModel.swift in Sources */,
-				1A2CFBC620DE863800BE49E4 /* ViewController.swift in Sources */,
-				1A2CFBDC20DEB45800BE49E4 /* TimeTableKakkokari.swift in Sources */,
+				1A72FE0221468F5100ECC053 /* TimerViewController.swift in Sources */,
 				1A2CFBC420DE863800BE49E4 /* AppDelegate.swift in Sources */,
+				1A72FE06214694AA00ECC053 /* TimeTableUpViewController.swift in Sources */,
+				1ABA51E6214980A100321A7B /* DataFile_TimeTable.swift in Sources */,
+				1ABB73CA214AE43B00AC7DBD /* TimeTableDownViewController.swift in Sources */,
+				1ABA51E82149815600321A7B /* TimerCalculation.swift in Sources */,
+				1A72FE0A2146AB0400ECC053 /* UIViewBorder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		1A2CFBC720DE863800BE49E4 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1A2CFBC820DE863800BE49E4 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		1A2CFBCC20DE863900BE49E4 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
