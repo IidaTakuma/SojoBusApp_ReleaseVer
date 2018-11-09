@@ -9,7 +9,7 @@
 import Foundation
 
 extension TimerViewController{
-    func timerCalculate(timeTable:[Int:[Int]],flag:Int) -> (indicateTime:String,indicateHour:String,indicateMinute:String,buttonFlag:Int) {
+    func timerCalculate(timeTable:[Int:[Int]],several:BusSeveral) -> (indicateTime:String,nextBusTimeText:String,several:BusSeveral) {
         let currentTime_sec = self.getCurrentTime_sec() //現在時刻の取得
         var secondIndex:Int = 0
         var keysArrayIndex:Int = 0
@@ -17,7 +17,7 @@ extension TimerViewController{
         var usedCalculate_sec:Int = 0
         var RemainingTime:Int = 0
         var indicateText:String = ""
-        var buttonFlag:Int = 0
+        var tmpSeveral = several
         
         var timeTableValueArray:[Int]!
         
@@ -37,7 +37,7 @@ extension TimerViewController{
             }
             if (timeTableValueArray.count == secondIndex + 1){
                 if(keysArrayIndex + 1 == keysArray.count){
-                    return ( "運行終了","--","--", 2 )
+                    return ( "運行終了","--:--", .none )
                 }
                 keysArrayIndex = keysArrayIndex + 1
                 secondIndex = 0
@@ -45,15 +45,15 @@ extension TimerViewController{
                 secondIndex = secondIndex + 1
             }
         }
-        if(flag == 0){
+        switch several {
+        case .zero:
             if (timeTableValueArray.count == secondIndex - 1 && keysArray.count == keysArrayIndex - 1){
-                buttonFlag = 1
+                tmpSeveral = .first
             }
-        }
-        if(flag == 1){
+        case .first:
             if (timeTableValueArray.count == secondIndex + 1){
                 if(keysArrayIndex + 1 == keysArray.count){
-                    return ( "運行終了","--","--", 1 )
+                    return ( "運行終了","--:--", .first )
                 }
                 keysArrayIndex = keysArrayIndex + 1
                 secondIndex = 0
@@ -64,56 +64,28 @@ extension TimerViewController{
             usedCalculate = timeTableValueArray[secondIndex]
             usedCalculate_sec = keysArray[keysArrayIndex] * 3600 + usedCalculate * 60
             RemainingTime = usedCalculate_sec - currentTime_sec
-            
+        case .none:
+            break
         }
-        let hour_int:Int = RemainingTime/3600
-        let hour = indicateAdjustment(origin: hour_int)
         
-        let minute_int:Int = (RemainingTime%3600)/60
-        let minute = indicateAdjustment(origin: minute_int)
+        indicateText = String(format: "%02d:%02d:%02d", RemainingTime / 3600, (RemainingTime % 3600) / 60, RemainingTime % 60)
+        let nextBusTimeText = String(format: "%02d:%02d", keysArray[keysArrayIndex], usedCalculate)
         
-        let second_int:Int = RemainingTime%60
-        let second = indicateAdjustment(origin: second_int)
-        
-        indicateText = hour + " : " + minute + " : " + second
-        
-        let indicateHour = indicateAdjustment(origin: keysArray[keysArrayIndex])
-        let indicateMinute = indicateAdjustment(origin:usedCalculate)
-        
-        return (indicateText,indicateHour,indicateMinute,buttonFlag)
+        return (indicateText,nextBusTimeText,tmpSeveral)
     }
     
     
     func getCurrentTime_sec() -> Int{ //現在時刻を取得(単位は0時0分からの経過秒数)
-        var currentTime:Int!
-        var Sec:Int!
-        var Min:Int!
-        var Hour:Int!
-        let format_sec = DateFormatter()
-        format_sec.dateFormat = "ss"
-        let conecter_sec = format_sec.string(from: Date())
-        Sec = Int(conecter_sec)!
-        
-        let format_min = DateFormatter()
-        format_min.dateFormat = "mm"
-        let conecter_min = format_min.string(from: Date())
-        Min = Int(conecter_min)!
-        
-        let format_hour = DateFormatter()
-        format_hour.dateFormat = "HH"
-        let conecter_hour = format_hour.string(from: Date())
-        Hour = Int(conecter_hour)!
-        
-        currentTime = Hour*3600 + Min*60 + Sec
-        return currentTime
-        
-        
+        let calendar = Calendar.current
+        let date = Date()
+        let nowSec = calendar.component(.second, from: date)
+        let nowMin = calendar.component(.minute, from: date)
+        let nowHour = calendar.component(.hour, from: date)
+        return (nowHour * 3600) + (nowMin * 60) + nowSec
     }
+    
     func indicateAdjustment(origin : Int ) -> String {
-        if origin < 10 {
-            return "0" + String(origin)
-        }
-        return String(origin)
+        return String(format: "%02d", origin)
     }
     
 }
