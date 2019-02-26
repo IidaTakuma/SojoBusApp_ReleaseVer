@@ -25,7 +25,6 @@ extension TimerViewController{
         keysArray.sort(by: {$0 < $1})
         
         /*----------以下 表示時間を確定するプログラム----------*/
-        //secondIndex = secondIndex + flag
 
         while(true){
             timeTableValueArray = timeTable[keysArray[keysArrayIndex]]

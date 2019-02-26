@@ -8,6 +8,11 @@
 
 import UIKit
 
+var takatsukiUpList:[Int:[Int]] = [:]
+var takatsukiDownList:[Int:[Int]] = [:]
+var tondaUpList:[Int:[Int]] = [:]
+var tondaDownList:[Int:[Int]] = [:]
+
 // バスの方向（上り、下り）
 enum BusDestination: Int {
     case up
@@ -44,6 +49,13 @@ class TimerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let getTimeTableFromAPI = GetTimeTableFromAPI()
+        getTimeTableFromAPI.getTimeTableFromAPI{takatsukiUpList_,takatsukiDownList_,tondaUpList_,tondaDownList_  in
+            takatsukiUpList = takatsukiUpList_
+            takatsukiDownList = takatsukiDownList_
+            tondaUpList = tondaUpList_
+            tondaDownList = tondaDownList_
+        }
         takatsuki_BeforeButtonLabel.isHidden = true
         takatsuki_NextButtonLabel.isHidden = false
         tonda_BeforeButtonLabel.isHidden = true
