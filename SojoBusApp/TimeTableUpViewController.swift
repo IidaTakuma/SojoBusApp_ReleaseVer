@@ -41,20 +41,22 @@ class TimeTableUpViewController: UIViewController,UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var addNum = 6
+        var keysArray:[Int]
         if tableView.tag == 0 {
-            if indexPath.row == 16 {
-                addNum = 7
-            }
+            keysArray = Array(takatsukiUpList.keys) //高槻上りの時刻表データをindex化
+            keysArray.sort(by: {$0 < $1})
+        }else{
+            keysArray = Array(tondaUpList.keys) //富田上りの時刻表データをindex化
+            keysArray.sort(by: {$0 < $1})
         }
         var cell: UITableViewCell = UITableViewCell()
         print(indexPath.row)
         if tableView.tag == 0{
             cell = tableView.dequeueReusableCell(withIdentifier: "takatsukiNobori", for: indexPath)
-            cell.textLabel!.text = self.IntArrayToString(hour: indexPath.row + addNum, array: takatsukiUpList[indexPath.row + addNum]!)
+            cell.textLabel!.text = self.IntArrayToString(hour: keysArray[indexPath.row], array: takatsukiUpList[keysArray[indexPath.row]]!)
         }else if tableView.tag == 1{
             cell = tableView.dequeueReusableCell(withIdentifier: "tondaNobori", for: indexPath)
-            cell.textLabel!.text = self.IntArrayToString(hour: indexPath.row + addNum, array: tondaUpList[indexPath.row + addNum]!)
+            cell.textLabel!.text = self.IntArrayToString(hour: keysArray[indexPath.row], array: tondaUpList[keysArray[indexPath.row]]!)
         }
         return cell
     }

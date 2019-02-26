@@ -8,80 +8,122 @@
 
 import Foundation
 
-let takatsukiUpList =
-    [6:[35],
-     7:[23,55],
-     8:[8,13,18,22,26,29,32,35,40,45,55],
-     9:[15,25,35,47,55],
-     10:[0,5,10,15,25,35,43,55],
-     11:[15,35,50],
-     12:[5,20,30,35,50],
-     13:[10,35,50],
-     14:[5,20,40],
-     15:[5,20,35,50],
-     16:[5,20,35,50],
-     17:[5,20,35,50],
-     18:[5,20,35,50],
-     19:[5,20,35,50],
-     20:[10,30,50],
-     21:[20,50],
-     23:[1]
-]
+struct TimeTableAll:Codable {
+    let dataList:[DataList]
+    
+    struct DataList: Codable {
+        let destination:String?
+        let six:[Int]?
+        let seven:[Int]?
+        let eight:[Int]?
+        let nine:[Int]?
+        let ten:[Int]?
+        let eleven:[Int]?
+        let twelve:[Int]?
+        let thirteen:[Int]?
+        let fourteen:[Int]?
+        let fifteen:[Int]?
+        let sixteen:[Int]?
+        let seventeen:[Int]?
+        let eighteen:[Int]?
+        let nineteen:[Int]?
+        let twenty:[Int]?
+        let twentyone:[Int]?
+        let twentytwo:[Int]?
+        let twentythree:[Int]?
+        
+        private enum CodingKeys:String, CodingKey{
+            case destination = "destination"
+            case six = "06"
+            case seven = "07"
+            case eight = "08"
+            case nine = "09"
+            case ten = "10"
+            case eleven = "11"
+            case twelve = "12"
+            case thirteen = "13"
+            case fourteen = "14"
+            case fifteen = "15"
+            case sixteen = "16"
+            case seventeen = "17"
+            case eighteen = "18"
+            case nineteen = "19"
+            case twenty = "20"
+            case twentyone = "21"
+            case twentytwo = "22"
+            case twentythree = "23"
+        }
+    }
+}
 
-let takatsukiDownList =
-    [7:[4,33],
-     8:[3,48],
-     9:[13,28],
-     10:[4,23,42],
-     11:[3,19,35,51],
-     12:[10,20,30,40,50],
-     13:[4,24,44],
-     14:[4,24,37,41,45,50],
-     15:[15,36,51],
-     16:[10,15,20,24,28,36,51],
-     17:[5,15,25,43,55,59],
-     18:[3,8,14,34,50],
-     19:[10,40,55],
-     20:[10,35],
-     21:[20,49],
-     22:[19]
-]
+class GetTimeTableFromAPI{
+    
+    public func getTimeTableFromAPI(completion:@escaping (_ takatsukiUp:[Int:[Int]],_ takatsukiDown:[Int:[Int]],_ tondaUp:[Int:[Int]],_ tondaDown:[Int:[Int]])->Void){
+        let url: URL = URL(string:"http://127.0.0.1:5000/test")!//URLの指定
+        let task: URLSessionTask = URLSession.shared.dataTask(with: url, completionHandler: {data, response, error in
+            let decoder: JSONDecoder = JSONDecoder()
+            do {
+                print(data!)
+                let originData:TimeTableAll = try decoder.decode(TimeTableAll.self, from: data!)// 全ての時刻表データが格納されている
+                print(originData)
+                let formatedDataList = self.formatData(originData: originData)
+                print(formatedDataList)
+                print("データの取得しました")
+                completion(formatedDataList.takatsukiUp,formatedDataList.takatsukiDown,formatedDataList.tondaUp,formatedDataList.tondaDown)
+                
+            } catch {
+                print("error:", error.localizedDescription)
+                //completion("")
+            }
+        })
+        task.resume()//実行する
+        
+    }
+    
+    func formatData(originData:TimeTableAll) -> (takatsukiUp:[Int:[Int]],takatsukiDown:[Int:[Int]],tondaUp:[Int:[Int]],tondaDown:[Int:[Int]]) {
+        
+        let usableData = originData.dataList
+        var takatsukiUp:[Int:[Int]] = [:]
+        var takatsukiDown:[Int:[Int]] = [:]
+        var tondaUp:[Int:[Int]] = [:]
+        var tondaDown:[Int:[Int]] = [:]
+        
+        for data in usableData{
+            var baffa:[Int:[Int]] = [:]
+            baffa[6] = data.six
+            baffa[7] = data.seven
+            baffa[8] = data.eight
+            baffa[9] = data.nine
+            baffa[10] = data.ten
+            baffa[11] = data.eleven
+            baffa[12] = data.twelve
+            baffa[13] = data.thirteen
+            baffa[14] = data.fourteen
+            baffa[15] = data.fifteen
+            baffa[16] = data.sixteen
+            baffa[17] = data.seventeen
+            baffa[18] = data.eighteen
+            baffa[19] = data.nineteen
+            baffa[20] = data.twenty
+            baffa[21] = data.twentyone
+            baffa[22] = data.twentytwo
+            baffa[23] = data.twentythree
+            
+            switch (data.destination) {
+            case "takatsukiUp":
+                takatsukiUp = baffa
+            case "takatsukiDown":
+                takatsukiDown = baffa
+            case "tondaUp":
+                tondaUp = baffa
+            case "tondaDown":
+                tondaDown = baffa
+            default:
+                print("受け取った時刻表はどれにも当てはまりませんでした")
+                
+            }
+        }
+        return (takatsukiUp,takatsukiDown,tondaUp,tondaDown)
+    }
+}
 
-let tondaUpList =
-    [6:[20],
-     7:[3,29],
-     8:[20,25,31,34,38],
-     9:[35,55],
-     10:[10,22],
-     11:[10,56],
-     12:[30],
-     13:[2,22,58],
-     14:[15,45],
-     15:[10,58],
-     16:[45],
-     17:[18,38],
-     18:[5,40],
-     19:[5,35],
-     20:[45],
-     21:[50]
-]
-
-let tondaDownList =
-    [6:[35],
-     7:[1,44],
-     8:[10],
-     9:[5,18,30,45],
-     10:[40],
-     11:[3,40],
-     12:[39],
-     13:[7,43],
-     14:[41],
-     15:[20],
-     16:[25,31,49],
-     17:[10,38],
-     18:[1,10,30],
-     19:[36,45],
-     20:[16,45],
-     21:[30],
-     22:[31]
-]

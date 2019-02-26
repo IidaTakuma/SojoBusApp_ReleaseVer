@@ -41,18 +41,22 @@ class TimeTableDownViewController: UIViewController, UITableViewDelegate, UITabl
             
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var addNum = 6
+        var keysArray:[Int]
         if tableView.tag == 0 {
-            addNum = 7
+            keysArray = Array(takatsukiDownList.keys) //引数の時刻表データをindex化
+        }else{
+            keysArray = Array(tondaDownList.keys) //引数の時刻表データをindex化
         }
+        keysArray.sort(by: {$0 < $1})
+        
         var cell: UITableViewCell = UITableViewCell()
         print(indexPath.row)
         if tableView.tag == 0{
             cell = tableView.dequeueReusableCell(withIdentifier: "takatsukiKudari", for: indexPath)
-            cell.textLabel!.text = self.IntArrayToString(hour: indexPath.row + addNum, array: takatsukiDownList[indexPath.row + addNum]!)
+            cell.textLabel!.text = self.IntArrayToString(hour: keysArray[indexPath.row] , array: takatsukiDownList[keysArray[indexPath.row]]!)
         }else if tableView.tag == 1{
             cell = tableView.dequeueReusableCell(withIdentifier: "tondaKudari", for: indexPath)
-            cell.textLabel!.text = self.IntArrayToString(hour: indexPath.row + addNum, array: tondaDownList[indexPath.row + addNum]!)
+            cell.textLabel!.text = self.IntArrayToString(hour: keysArray[indexPath.row], array: tondaDownList[keysArray[indexPath.row]]!)
         }
         return cell
     }
