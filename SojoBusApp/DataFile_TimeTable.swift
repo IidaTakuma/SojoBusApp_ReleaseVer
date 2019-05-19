@@ -59,7 +59,7 @@ struct TimeTableAll:Codable {
 class GetTimeTableFromAPI{
     
     public func getTimeTableFromAPI(completion:@escaping (_ takatsukiUp:[Int:[Int]],_ takatsukiDown:[Int:[Int]],_ tondaUp:[Int:[Int]],_ tondaDown:[Int:[Int]])->Void){
-        let url: URL = URL(string:"http://127.0.0.1:5000/test")!//URLの指定
+        let url: URL = URL(string:"https://calm-mountain-57108.herokuapp.com/timeTable")!
         let task: URLSessionTask = URLSession.shared.dataTask(with: url, completionHandler: {data, response, error in
             let decoder: JSONDecoder = JSONDecoder()
             do {
